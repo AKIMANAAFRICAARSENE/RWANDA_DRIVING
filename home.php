@@ -1,3 +1,6 @@
+<?php
+    include "./auth/session-handler.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +22,8 @@
                     <li><a href="./home.php" class="active">Home</a></li>
                     <li><a href="./candidates.php">Candidates</a></li>
                     <li><a href="./exam.php">Exam</a></li>
-                    <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li>
+                    <!-- <li><a href="./failed.php">Failed</a></li>
+                    <li><a href="./passed.php">Passed</a></li> -->
                     <li><a href="./report.php">Report</a></li>
                 </ul>
                 <div>

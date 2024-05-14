@@ -83,7 +83,7 @@ while ($row = mysqli_fetch_array($select)) {
                                     } ?>>F</option>
             </select><br>
             <label for="Marks">Add Marks :</label><br>
-            <input type="text" maxlength="2" value="<?php echo "$grade" ?>" name="Marks" required><br>
+            <input type="text" maxlength="3" value="" name="Marks" required><br>
             <button type="submit" name="submit">Add Marks</button>
         </form>
     </div>
@@ -117,7 +117,7 @@ if (isset($_POST['submit'])) {
 			 `decision`='$decision'
 			 WHERE `candidate_nation_id`='$id'";
             if ($db->query($update)) {
-                header("location:../../candidates.php");
+                header("location:../../exam.php");
             } else {
                 echo "error:" . $update . "<br>" . $db->error;
             }
@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
             $insert = "INSERT INTO grade(`candidate_nation_id`,`license_exam_category`,`obtained_marks`,`decision`)
 			VALUES('$nationalid','$category','$Marks','$decision')";
             if ($db->query($insert)) {
-                header("location:../../candidates.php");
+                header("location:../../exam.php");
             } else {
                 echo "error" . $insert . "<br>" . $db->error;
             }

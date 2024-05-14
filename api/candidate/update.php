@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
 
     $sql = mysqli_query($db, "UPDATE candidate SET first_name = '$fname', last_name = '$lname', dob = '$dob', exam_date = '$exam_date',gender = '$gender', phone_number = '$phone' WHERE candidate_nation_id = '{$id}'");
     if ($sql == true) {
-        header("Location: ../../index.php");
+        header("Location: ../../candidates.php");
         exit(); // Ensure no further code execution after redirection
     } else {
         echo "record not inserted";
@@ -87,9 +87,13 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R D L</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
 </head>
 
 <body>
+
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;<u>Update Candidate</u></h1>
+
     <div class="container mt-5">
         <?php echo $form; ?>
     </div>

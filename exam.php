@@ -21,10 +21,10 @@ if ($sql) {
             <th>' . $candidate['dob'] . '</th>
             <th>' . $candidate['phone_number'] . '</th>
             <th>' . $candidate['gender'] . '</th>
+            <th>' . $candidate['license_exam_category'] . '</th>
             <th>' . $candidate['obtained_marks'] . '</th>
             <th>' . $candidate['decision'] . '</th>
-            <td><a href="./api/candidate/update.php?id=' . $candidate['candidate_nation_id'] . '">update</a></td>
-            <td><a href="./api/candidate/grade.php?id=' . $candidate['candidate_nation_id'] . '">grade</a></td>
+            <td><a href="./api/candidate/grade.php?id=' . $candidate['candidate_nation_id'] . '">Add-Grade</a></td>
             
         </tr>';
         }
@@ -43,6 +43,12 @@ if ($sql) {
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <style>
+        table {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -57,8 +63,8 @@ if ($sql) {
                     <li><a href="./home.php">Home</a></li>
                     <li><a href="./candidates.php">Candidates</a></li>
                     <li><a href="./exam.php" class="active">Exam</a></li>
-                    <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li>
+                    <!-- <li><a href="./failed.php">Failed</a></li>
+                    <li><a href="./passed.php">Passed</a></li> -->
                     <li><a href="./report.php">Report</a></li>
                 </ul>
                 <div class="auth-links">
@@ -78,6 +84,7 @@ if ($sql) {
                     <th>Date of Birth</th>
                     <th>Phone Number</th>
                     <th>Gender</th>
+                    <th>License Category</th>
                     <th>Marks</th>
                     <th>Decision</th>
                     <th colspan="3">Action</th>

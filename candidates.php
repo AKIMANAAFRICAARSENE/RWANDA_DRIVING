@@ -1,6 +1,7 @@
 <?php
 include "./db/db.php";
 include "./components.php";
+include "./auth/session-handler.php";
 
 $sql = mysqli_query($db, "SELECT * FROM candidate");
 $tbody = '';
@@ -24,7 +25,7 @@ if ($sql) {
             <th>' . $candidate['exam_date'] . '</th>
             <td><a href="./api/candidate/update.php?id=' . $candidate['candidate_nation_id'] . '">update</a></td>
             <td><a href="./api/candidate/delete.php?id=' . $candidate['candidate_nation_id'] . '">delete</a></td>
-            <td><a href="./api/candidate/grade.php?id=' . $candidate['candidate_nation_id'] . '">grade</a></td>
+            <td><a href="./api/candidate/add_exam.php?id=' . $candidate['candidate_nation_id'] . '">Add-Exam</a></td>
             
         </tr>';
         }
@@ -57,50 +58,57 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <title>R D L</title>
     <style>
     form {
       display: flex;
       flex-direction: column;
       align-items: left;
-      margin-left: 10px;
+      margin-left: 20px;
+      margin-top: 18px;
     }
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     select,
     textarea {
-      width: 70%;
-      padding: 12px;
+      width: 50%;
+      padding: 5px;
       margin: 8px 0;
       box-sizing: border-box;
       border: none;
       outline: none;
       border-bottom: 2px solid #ccc;
-      font-size: 20px;
+      font-size: 18px;
       background-color: transparent;
     }
     input[type="date"],
     input[type="time"] {
-      width: 70%;
-      padding: 12px;
+      width: 50%;
+      padding: 5px;
       margin: 8px 0;
       box-sizing: border-box;
       border: none;
       border-bottom: 2px solid #ccc;
-      font-size: 20px;
+      font-size: 18px;
       background-color: transparent;
+    }
+
+    label{
+        font-size: 18px;
+        font-weight: bold;
     }
     button[type="submit"] {
       background-color: #0D6EFD;
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 18px;
       margin-top: 16px;
       cursor: pointer;
       border-radius: 5px;
       width: 15%;
-      font-size: 20px;
+      font-size: 18px;
       margin-left: 200px;
       margin-bottom: 10px;
     }
@@ -109,7 +117,11 @@ if (isset($_POST['submit'])) {
     }
     input::placeholder {
       color: black;
-      font-size: 20px;
+      font-size: 18px;
+    }
+
+    table{
+        text-align: center;
     }
   </style>
 </head>
@@ -127,8 +139,8 @@ if (isset($_POST['submit'])) {
                     <li><a href="./home.php">Home</a></li>
                     <li><a href="./candidates.php" class="active">Candidates</a></li>
                     <li><a href="./exam.php">Exam</a></li>
-                    <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li>
+                    <!-- <li><a href="./failed.php">Failed</a></li>
+                    <li><a href="./passed.php">Passed</a></li> -->
                     <li><a href="./report.php">Report</a></li>
                 </ul>
                 <div class="auth-links">
@@ -138,25 +150,28 @@ if (isset($_POST['submit'])) {
         </div>
     </nav>
 <div class="content">
-    <h1>Add Candidate</h1>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;<u>Add Candidate</u></h1>
 
     <form action="" method="POST">
-        <input type="text" name="nid" placeholder="National ID" required>
+        <label for="">National ID</label>
+        <input type="text" name="nid" maxlength="20" required>
 
-        <input type="text" name="fname" placeholder="First Name" required>
+        <label for="">First Name</label>
+        <input type="text" name="fname" required>
 
-        <input type="text" name="lname" placeholder="Last Name" required>
+        <label for="">Last Name</label>
+        <input type="text" name="lname" required>
 
         <div class="col-md-6">
             <label class="form-label">Gender</label>
             <div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" value="male" ' . $maleChecked . '>
-                    <label class="form-check-label" for="male" required>Male</label>
+                    <input class="form-check-input" type="radio" name="gender" value="male" ' . $maleChecked . '  required>
+                    <label class="form-check-label" for="male">Male</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" value="female" ' . $femaleChecked . '>
-                    <label class="form-check-label" for="female" required>Female</label>
+                    <input class="form-check-input" type="radio" name="gender" value="female" ' . $femaleChecked . '  required>
+                    <label class="form-check-label" for="female">Female</label>
                 </div>
             </div>
         </div>
@@ -165,11 +180,14 @@ if (isset($_POST['submit'])) {
         <label class="gender-label"><input type="radio" name="gender" value="male" class="form-check-input"> Male</label>
         <label><input type="radio" name="gender" value="female" class="form-check-input"> Female</label> -->
 
-        <input type="date" name="dob"  placeholder="Date Of Birth">
+        <label for="">Date Of Birth</label>
+        <input type="date" name="dob"  required>
 
-        <input type="date" name="exam_date" placeholder="Exam Date">
+        <label for="">Exam Date</label>
+        <input type="date" name="exam_date"  required>
 
-        <input type="text" name="phone" placeholder="Phone Number">
+        <label for="">Phone Number</label>
+        <input type="text" name="phone" maxlength="10" required>
         <button type="submit" name="submit">Add</button>
     </form>
 

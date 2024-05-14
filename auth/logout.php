@@ -6,6 +6,6 @@ if (isset($_SESSION['admin_name'])) {
     session_destroy();
     header("location: ./login.php");
 }else{
-    header("location: ../index.php");
+    header("location: ../home.php");
 }
 ?>

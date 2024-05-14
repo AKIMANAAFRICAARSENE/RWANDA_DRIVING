@@ -6,19 +6,27 @@ if (isset($_SESSION['admin_name'])) {
 }
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $password = $_POST['confirm_password'];
-    $check = mysqli_query($db,"SELECT * FROM admin WHERE admin_name='{$username}'");
-    if (mysqli_num_rows($check) > 0) {
-      echo "username already exists";
+    $password = $_POST['password'];
+    $c_password = $_POST['confirm_password'];
+
+    if($c_password === $password){
+      $check = mysqli_query($db,"SELECT * FROM admin WHERE admin_name='{$username}'");
+      if (mysqli_num_rows($check) > 0) {
+        echo "username already exists";
+      } else{
+        $add = mysqli_query($db,"INSERT INTO admin(admin_name, admin_password) VALUES('{$username}','{$password}')");
+        if ($add) {
+          $select = mysqli_query($db,"SELECT * FROM admin WHERE admin_name ='{$username}' AND admin_password ='{$password}'");
+          $fetch = mysqli_fetch_assoc($select)['admin_name'];
+          $_SESSION['admin_name'] = $fetch;
+          header("location: ../home.php");
+        } 
+      }
+
     } else{
-      $add = mysqli_query($db,"INSERT INTO admin(admin_name, admin_password) VALUES('{$username}','{$password}')");
-      if ($add) {
-        $select = mysqli_query($db,"SELECT * FROM admin WHERE admin_name ='{$username}' AND admin_password ='{$password}'");
-        $fetch = mysqli_fetch_assoc($select)['admin_name'];
-        $_SESSION['admin_name'] = $fetch;
-        header("location: ../home.php");
-      } 
+      echo"use the password on password";
     }
+
 }
 ?>
 

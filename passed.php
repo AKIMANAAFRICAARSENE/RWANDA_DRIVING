@@ -23,8 +23,7 @@ if ($sql) {
             <th>' . $candidate['gender'] . '</th>
             <th>' . $candidate['obtained_marks'] . '</th>
             <th>' . $candidate['decision'] . '</th>
-            <td><a href="./api/candidate/update.php?id=' . $candidate['candidate_nation_id'] . '">update</a></td>
-            <td><a href="./api/candidate/grade.php?id=' . $candidate['candidate_nation_id'] . '">grade</a></td>
+            <td><a href="./api/candidate/grade.php?id=' . $candidate['candidate_nation_id'] . '">Update-Garde</a></td>
             
         </tr>';
         }
@@ -39,17 +38,13 @@ if ($sql) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
     <title>Passed</title>
     <style>
         table {
-            border-collapse: collapse;
+            margin-top: 20px;
         }
-        
-        td,
-        th {
-            padding: 4px;
-        }
-        </style>
+    </style>
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
