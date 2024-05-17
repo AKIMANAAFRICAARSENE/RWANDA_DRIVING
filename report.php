@@ -216,8 +216,14 @@ if ($sql) {
                 ?>
             </tbody>
         </table>
+        <button onclick="printTable()" class="btn btn-primary">Print Table</button>
 
     </div>
+    <script>
+        function printTable() {
+            window.print();
+        }
+    </script>
     <!-- <div class="print">
         <button onclick="print()">print</button>
     </div> -->
