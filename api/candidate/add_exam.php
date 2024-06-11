@@ -55,12 +55,8 @@ while ($row = mysqli_fetch_array($select)) {
         <option value="B" <?php if ($cat == 'B') echo 'selected'; ?>>B category</option>
         <option value="C" <?php if ($cat == 'C') echo 'selected'; ?>>C category</option>
         <option value="D" <?php if ($cat == 'D') echo 'selected'; ?>>D category</option>
-        <option value="E" <?php if ($cat == 'E') echo 'selected'; ?>>E category</option>
-        <option value="F" <?php if ($cat == 'F') echo 'selected'; ?>>F category</option>
     </select><br><br>
-    <!-- <label for="Marks" style="text-align: left;">Add Marks:</label><br>
-    <input type="text" maxlength="3" value="<?php echo htmlspecialchars($grade); ?>" name="Marks" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br> -->
-    <button type="submit" name="submit" style="width: 100%; background-color: #1971c2; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Add Marks</button>
+    <button type="submit" name="submit" style="width: 100%; background-color: #1971c2; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Add Exam</button>
 </form>
 
 
@@ -92,7 +88,6 @@ if (isset($_POST['submit'])) {
             }
             $update = "UPDATE `grade`
 			 SET `license_exam_category`='$category',
-			--  `obtained_marks`='$Marks',
 			 `decision`='$decision'
 			 WHERE `candidate_nation_id`='$id'";
             if ($db->query($update)) {
@@ -104,7 +99,6 @@ if (isset($_POST['submit'])) {
 
             $insert = "INSERT INTO grade(`candidate_nation_id`,`license_exam_category`,`obtained_marks`,`decision`)
             VALUES('$nationalid','$category','$Marks','$decision')";
-			// VALUES('$nationalid','$category','$Marks','$decision')";
             if ($db->query($insert)) {
                 header("location:../../candidates.php");
             } else {

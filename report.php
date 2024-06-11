@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 include "./db/db.php";
 include "./components.php";
 include "./auth/session-handler.php";
@@ -35,87 +35,8 @@ if ($sql) {
         $tbody .= "<tr><td colspan='4'>no record</td></tr>";
     }
 }
-
-// if (isset($_POST['submit'])) {
-//     $nid = $_POST['nid'];
-//     $fname = $_POST['fname'];
-//     $lname = $_POST['lname'];
-//     $gender = $_POST['gender'];
-//     $dob = $_POST['dob'];
-//     $exam_date = $_POST['exam_date'];
-//     $phone = $_POST['phone'];
-
-//     $sql = mysqli_query($db, "INSERT INTO `candidate` (`candidate_nation_id`, `first_name`, `last_name`, `gender`, `dob`, `exam_date`, `phone_number`) VALUES ('$nid', '$fname', '$lname', '$gender', '$dob', '$exam_date', '$phone')");
-//     if ($sql = true) {
-//         header("Location: ./index.php");
-//     } else {
-//         echo "record not inserted" ;
-//     }
-// }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report</title>
-    
-    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
-</head>
-<body>
-<nav>
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo-wrapper">
-                    <img class="logo-mobile" src="./logo.png" alt="Workflow" />
-                    <img class="logo-desktop" src="./logo.png" alt="Workflow" />
-                </div>
-                <ul class="nav-links">
-                    <li><a href="./home.php">Home</a></li>
-                    <li><a href="./candidates.php">Candidates</a></li>
-                    <li><a href="./exam.php">Exam</a></li>
-                    <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li>
-                    <li><a href="./report.php"  class="active">Report</a></li>
-                </ul>
-                <div class="auth-links">
-                    <a href="./auth/logout.php" class="btn btn-primary">Sign Out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <main>
-        <div class="container">
-            <table border="2" class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>candidate National id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Date of Birth</th>
-                        <th>Phone Number</th>
-                        <th>Gender</th>
-                        <th>Exam Date</th>
-                        <th>Exam Category</th>
-                        <th>Exam Result</th>
-                        <th>Decision</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    echo $tbody;
-                    ?>
-                </tbody>
-            </table>
-            
-        </div>
-    </main>
-</body>
-</html> -->
 
 <?php
 // include "./auth/session-handler.php";
@@ -182,18 +103,16 @@ if ($sql) {
                     <li><a href="./home.php">Home</a></li>
                     <li><a href="./candidates.php">Candidates</a></li>
                     <li><a href="./exam.php">Exam</a></li>
-                    <!-- <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li> -->
-                    <li><a href="./report.php"  class="active">Report</a></li>
+                    <li><a href="./report.php" class="active">Report</a></li>
                 </ul>
                 <div class="auth-links">
                     <a href="./auth/logout.php" class="btn btn-primary">Sign Out</a>
-                </div> 
+                </div>
             </div>
         </div>
     </nav>
     <div class="container">
-        <table border="2" class="table">
+        <table border="2" class="table" id="printTable">
             <thead>
                 <tr>
                     <th>No</th>
@@ -207,7 +126,6 @@ if ($sql) {
                     <th>License Category</th>
                     <th>Marks</th>
                     <th>Decision</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -216,11 +134,23 @@ if ($sql) {
                 ?>
             </tbody>
         </table>
-
+        <button onclick="printTable()" class="btn btn-primary">Print Table</button>
     </div>
-    <!-- <div class="print">
-        <button onclick="print()">print</button>
-    </div> -->
+    <script>
+        function printTable() {
+            var divToPrint = document.getElementById('printTable');
+            var newWin = window.open('');
+            // newWin.document.write('<html><head><title></title>');
+            newWin.document.write('<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">');
+            newWin.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">');
+            newWin.document.write('</head><body>');
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.document.write('</body></html>');
+            newWin.document.close();
+            newWin.print();
+            newWin.close();
+        }
+    </script>
 </body>
 
 </html>

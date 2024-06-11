@@ -6,8 +6,6 @@ $sql = mysqli_query($db, "SELECT * FROM candidate WHERE candidate_nation_id = '{
 $form = '';
 if ($sql == true) {
     $fetch = mysqli_fetch_assoc($sql);
-
-    // Check if the fetched gender is 'male' or 'female' and set the appropriate radio button as checked
     $maleChecked = '';
     $femaleChecked = '';
     if ($fetch['gender'] === 'male') {
@@ -73,7 +71,6 @@ if (isset($_POST['submit'])) {
     $sql = mysqli_query($db, "UPDATE candidate SET first_name = '$fname', last_name = '$lname', dob = '$dob', exam_date = '$exam_date',gender = '$gender', phone_number = '$phone' WHERE candidate_nation_id = '{$id}'");
     if ($sql == true) {
         header("Location: ../../candidates.php");
-        exit(); // Ensure no further code execution after redirection
     } else {
         echo "record not inserted";
     }

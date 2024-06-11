@@ -40,16 +40,16 @@ while ($row = mysqli_fetch_array($select)) {
 <body>
     <a href="List_of_all_candidated.php"><img src="../image/back.png" alt=""></a>
     <div class="candidate">
-        <form action="" method="post">
-            <h2>Update Candidate Grades</h2>
-            <label for="candidate_nation_id">National Id :</label><br>
-            <input type="number" name="nationalid" value="<?php echo "$nationalid" ?>" readonly required><br>
+        <form action="" method="post" style="max-width: 400px; margin: 0; padding: 0 20px;">
+            <h2 style="text-align: left;">Update Candidate Grades</h2>
+            <label for="candidate_nation_id" style="text-align: left;">National Id :</label><br>
+            <input type="number" name="nationalid" value="<?php echo "$nationalid" ?>" readonly required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
             <label for="FirstName">First Name :</label><br>
-            <input type="text" name="fname" value="<?php echo "$FirstName" ?>" readonly required><br>
+            <input type="text" name="fname" value="<?php echo "$FirstName" ?>" readonly required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
             <label for="LastName">Last Name :</label><br>
-            <input type="text" name="lname" value="<?php echo "$LastName" ?>" readonly required><br>
+            <input type="text" name="lname" value="<?php echo "$LastName" ?>" readonly required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
             <label for="category">Category :</label><br>
-            <select name="category" id="" required>
+            <select name="category" id="" required style="width: 100%; padding: 8px; margin-bottom: 10px;">
                 <option value="">Select Category</option>
                 <option value="A" <?php if ($cat == 'A') {
                                         echo 'selected';
@@ -71,20 +71,10 @@ while ($row = mysqli_fetch_array($select)) {
                                     } else {
                                         echo "";
                                     } ?>>D</option>
-                <option value="E" <?php if ($cat == 'E') {
-                                        echo 'selected';
-                                    } else {
-                                        echo "";
-                                    } ?>>E</option>
-                <option value="F" <?php if ($cat == 'F') {
-                                        echo 'selected';
-                                    } else {
-                                        echo "";
-                                    } ?>>F</option>
             </select><br>
             <label for="Marks">Add Marks :</label><br>
             <input type="text" maxlength="3" value="" name="Marks" required><br>
-            <button type="submit" name="submit">Add Marks</button>
+            <button type="submit" name="submit" style="width: 100%; background-color: #1971c2; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Add Marks</button>
         </form>
     </div>
 </body>

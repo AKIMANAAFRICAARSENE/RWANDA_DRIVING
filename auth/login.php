@@ -1,19 +1,22 @@
 <?php
 include "../db/db.php";
+
 session_start();
+
 if(isset($_POST['submit'])){
   $username = $_POST['username'];
   $password = $_POST['password'];
-  
-  $sql =mysqli_query($db,"SELECT * FROM Admin WHERE admin_name = '$username' AND admin_password = '$password'");
+
+  $sql = mysqli_query($db,"SELECT * FROM `admin` WHERE `admin_name` = '$username' AND `admin_password` = '$password'");
   if(mysqli_num_rows($sql) > 0){
-    $fetch = mysqli_fetch_assoc($sql)['admin_name'];
-    $_SESSION['admin_name'] = $fetch;
-    header("location: ../home.php");
+    $fecth = mysqli_fetch_assoc($sql)['admin_name'];
+    $_SESSION['admin_name'] = $fecth;
+    header("Location: ../home.php");
   }else{
-    echo "Username or password is incorrect!";
+    echo"incorrect username or password";
   }
-} 
+
+}
 ?>
 
 <!DOCTYPE html>

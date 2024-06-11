@@ -1,4 +1,4 @@
-<div?php
+<?php
     include "./auth/session-handler.php";
 ?>
 <!DOCTYPE html>
@@ -12,91 +12,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>R D L</title>
     <style>
- /* {
-    color: black;
-    font-size: 20px;
-    font-family: monospace;
-    line-height: 25px;
-    background-color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    height: 100vh;
-} */
-
-.divs{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    /* background: #000; */
-    height: 70vh;
-
-}
-h1{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  color: black;
-}
-.content1{
-    background-color: #0072fb;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
-    margin-left: 20px;
-    width: 50%;
-    box-shadow: 0 1px 2px 0 #000;
-    margin-top: 60px;
-    height:500px;
-    
-    
-}
-.content1 p{
-    display: block;
-    color: white;
-    font-size: 20px;
-
-}
-.footer-social{
-    margin-right:30px;
-    margin-top: 16%;
-    /* height: %; */
-}
-.footer-social ul {
-    width: 350px;
-    background: white;
-    list-style-type: none;
-    padding: 0;
-    box-shadow: 0 1px 2px 0 #1971c2;
-    border-radius: 10px;
-
-}
-
-.footer-social ul li {
-    display: block;
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.footer-social ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-social ul li a {
-    color: #0072fb;
-    font-size: 20px;
-}
-
-.footer-social ul li a i {
-    transition: color 0.3s ease;
-    font-size: 30px;
-}
-
-.footer-social ul li a i:hover {
-    color: #4f46e5;
-}
+        .container1 {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
+            margin-left: 80px;
+            width: 90vw;
+        }
+        .content {
+            background-color: #3465a1e0;
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        p{
+            font-size: large;
+        }
 
     </style>
 </head>
@@ -112,8 +45,6 @@ h1{
                     <li><a href="./home.php" class="active">Home</a></li>
                     <li><a href="./candidates.php">Candidates</a></li>
                     <li><a href="./exam.php">Exam</a></li>
-                    <!-- <li><a href="./failed.php">Failed</a></li>
-                    <li><a href="./passed.php">Passed</a></li> -->
                     <li><a href="./report.php">Report</a></li>
                 </ul>
                 <div>
@@ -123,21 +54,33 @@ h1{
         </div>
     </nav>
 
-    <h1>Welcome to Rwanda Driving License System</h1>
-    <div class="divs">
-        <div class="content1">
-            <p>> Register candidates for a Rwanda Driving License,</p> 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, quia error, nesciunt natus numquam voluptatibus placeat veniam cumque dolor deleniti sed adipisci repellat suscipit doloribus velit fugiat quam nam eos?</p>
-            <p>> Record the exam results for the candidate </p>
-        </div>
-        <div class="footer-social">
+    <div class="container1">
+        <div class="content">
+            <h1>Rwanda Driving License System</h1>
+            <p>The driving license system in Rwanda is designed to ensure that all drivers meet the necessary requirements to operate vehicles safely on the roads. The system includes various types of licenses depending on the category of vehicle an individual wishes to drive.</p>
+            <h2>License Categories</h2>
+            <p>Rwanda offers different categories of driving licenses, including:</p>
             <ul>
-                <li><a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>&nbsp; FaceBook</li>
-                <li><a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>&nbsp; Twitter</li>
-                <li><a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>&nbsp; Instagram</li>
-                <li><a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>&nbsp; LinkedIN</li>
+                <li><strong>Category A:</strong> Motorcycles</li>
+                <li><strong>Category B:</strong> Light vehicles (e.g., cars)</li>
+                <li><strong>Category C:</strong> Heavy vehicles (e.g., trucks)</li>
+                <li><strong>Category D:</strong> Passenger vehicles (e.g., buses)</li>
             </ul>
+            <h2>Obtaining a Driving License</h2>
+            <p>To obtain a driving license in Rwanda, applicants must follow these steps:</p>
+            <ol>
+                <li><strong>Register:</strong> Register at the Rwanda National Police (RNP) driving license center.</li>
+                <li><strong>Theory Test:</strong> Pass a written theory test covering road signs, traffic laws, and safe driving practices.</li>
+                <li><strong>Practical Test:</strong> Pass a practical driving test to demonstrate the ability to control the vehicle and follow traffic regulations.</li>
+                <li><strong>Medical Examination:</strong> Undergo a medical examination to ensure fitness to drive.</li>
+            </ol>
+            <h2>Renewal and Replacement</h2>
+            <p>Driving licenses in Rwanda are valid for a specified period and must be renewed before expiration. Lost or damaged licenses can be replaced by applying at the RNP driving license center and providing the necessary documentation.</p>
+            <h2>Penalties and Enforcement</h2>
+            <p>Rwanda has strict penalties for traffic violations, including fines, license suspension, and imprisonment for severe offenses. The RNP actively enforces traffic laws to enhance road safety.</p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-QiPT2DEVIftZpR2AFmkbh7zF1TeZst+a2peQs5ueFhIpu0MO5TIC/N+qkR6pc0qM" crossorigin="anonymous"></script>
+
 </body>
 </html>
